@@ -22,8 +22,7 @@ U1 : REVOKE INSERT ON STUDENT FROM U2 CASCADE
 하지만 **4번 선지는 옳지 않은 선지**이다.  
   
 전세계에서 사용하는 DB 교과서인 Database System (Silverschatz 저)(이하 원서)에 따라 이 문제의 오류를 짚고자 한다.  
-
-<img width="737" height="72" alt="db20120719 (1)" src="https://github.com/user-attachments/assets/17920dfd-01b0-4ed1-9de3-d6fe2a8adc7a" />
+<img width="737" height="72" alt="image" src="https://github.com/user-attachments/assets/f83e1623-80e3-4562-a6f0-c1359285a260" />
   <br>
 ── *Database System (Silverschatz 저) 4.7.6절*  
 
@@ -31,14 +30,16 @@ U1 : REVOKE INSERT ON STUDENT FROM U2 CASCADE
 따라서 문제의 "REVOKE GRANT OPTION FOR SELECT ON STUDENT FROM U2" 문장에서 CASCADE나 RESTRICT가 없으므로 (생략되었으므로) **CASCADE라고 생각**을 하고 푸는 것이 맞다.  
   
 이때, REVOKE GRANT OPTION 이 무엇을 의미하는지에 대해서 논할 필요가 있다.  
-<img width="737" height="105" alt="db20120719 (2)" src="https://github.com/user-attachments/assets/e753a506-d0d7-44cc-a4dc-6d9e6ac48f64" />
+<img width="737" height="105" alt="image" src="https://github.com/user-attachments/assets/b89a1c56-541a-46a3-9593-c5cbc67cf5be" />
+
   <br>
  ── *Database System (Silverschatz 저) 4.7.6절*  
 원서에 따르면, REVOKE GRANT OPTION은 only GRANT OPTION만 회수하는 것이다. (실제 SELECT 권한이 아니라)  
 즉, U2의 SELECT 권한이 아니라 GRANT OPTION 권한만 회수하는 것이다.  
 이때 U3의 SELECT 권한은 어떻게 되는지가 핵심 쟁점이다.  
   
-<img width="750" height="362" alt="db20120719 (3)" src="https://github.com/user-attachments/assets/834cd949-27c7-49cd-9933-3e133682bb62" />  <br>
+<img width="750" height="362" alt="image" src="https://github.com/user-attachments/assets/1834d5c7-5ad3-4272-a81c-8cb58e361e56" />
+  <br>
  ── *Database System (Silverschatz 저) 4.7.5절*  
 원서에는 사용자는 권한 그래프의 최상위 노드(즉 데이터베이스 관리자)에서 해당 사용자를 나타내는 노드까지 내려오는 경로가 존재하는 경우에만 권한을 갖는다고 적혀 있다.  
 문제에서 U3가 받은 SELECT 권한은 U2가 당시 보유했던 WITH GRANT OPTION이라는 '특권(Privilege)'에 전적으로 의존하여 생성된 것이다.  
@@ -48,7 +49,8 @@ U2의 SELECT가 존재한다고 해서, 그것이 U3에 대한 SELECT 권한의 
 U3의 SELECT 권한의 근거는 U2의 **GRANT OPTION**이었다.  
 따라서 **U3**의 **SELECT 권한은 없다.**   
   
-<img width="892" height="669" alt="db20120719 (4)" src="https://github.com/user-attachments/assets/2ec0018b-47c7-4423-af9a-e966419f8624" />
+<img width="892" height="669" alt="image" src="https://github.com/user-attachments/assets/c5697248-3948-44e2-9a89-1e8475d00b02" />
+
   <br>
   
  ── *Database System (Silverschatz 저) PPT*  
@@ -57,7 +59,8 @@ U3의 SELECT 권한의 근거는 U2의 **GRANT OPTION**이었다.
 > **(All privileges that depend on the privilege being revoked are also revoked.)**  
 
 이를 증명하기 위해, PostgreSQL을 깔고 실행해보았다.  
-<img width="852" height="697" alt="img" src="https://github.com/user-attachments/assets/89e5f7b9-b921-4a84-9b9d-4dea7b7b4638" />
+<img width="852" height="697" alt="image" src="https://github.com/user-attachments/assets/9b653f41-7ded-4331-a445-818aea2ca671" />
+
   <br>
 U3의 역할로 SET 한 후, SELECT 문을 실행했을 때, **접근 권한이 없다**고 나온다. (INSERT 또한 당연히 없다.)  
 CASCADE를 명시한 이유는 PostgreSQL에서 기본값이 RESTRICT이기 때문이다.  
