@@ -1,7 +1,7 @@
 ---
 title: 2012 국가직 7급 데이터베이스론 19번 문제 출제 오류 (REVOKE GRANT OPTION)
 categories: [DB, 7th-civil-exam]
-tags: [analysis, error]
+tags: [db, 7th-civil-exam, analysis, error]
 ---
   
 다음과 같은 일련의 권한 부여 SQL 명령어를 실행하였을 때, 이에 대한 설명으로 옳지 않은 것은?  
