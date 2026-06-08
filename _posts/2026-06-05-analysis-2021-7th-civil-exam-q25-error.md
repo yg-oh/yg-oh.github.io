@@ -1,7 +1,7 @@
 ---
 title: 2021 국가직 7급 데이터베이스론 25번 문제 출제 오류 (k-way merge)
 categories: [DB, 7th-civil-exam]
-tags: [analysis, error]
+tags: [db, 7th-civil-exam, analysis, error]
 math: true
 ---
   
