@@ -4,7 +4,6 @@ categories: [IS]
 tags: [is, summary]
 ---
 
-# Windows 인증 구성요소: LSA / SAM / SRM
 
 ## 1. 전체 인증 처리 흐름
 
@@ -14,6 +13,8 @@ tags: [is, summary]
 → ③ SRM: 인증 성공 시 SID 부여, SID 기반으로 리소스 접근 허용 여부 결정, 감사 메시지 생성
 → ④ LSA: 계정명-SID 매칭(조회), SRM이 생성한 감사 로그 기록
 ```
+</br>
+
 
 ## 2. LSA (Local Security Authority)
 
@@ -24,18 +25,27 @@ tags: [is, summary]
 - 계정명과 SID 간 매칭(변환/조회) 서비스 제공
 - SRM이 생성한 감사 로그를 기록
 - NT 보안의 중심 서브시스템(Security Subsystem)으로 불림
+</br>
+
+
 
 ## 3. SAM (Security Account Manager)
 
 - 사용자/그룹 계정 정보(계정명, 패스워드 해시, SID 등)를 저장하는 **데이터베이스**
 - 파일 경로: `C:\Windows\System32\config\SAM`
 - LSA가 인증 판단 시 조회하는 **수동적 저장소** — SAM 자체가 능동적으로 비교·판단을 수행하지는 않음
+</br>
+
+
 
 ## 4. SRM (Security Reference Monitor)
 
 - LSA로부터 인증 성공 결과를 받으면 사용자에게 **SID(Security Identifier) 부여**
 - 부여된 SID를 기반으로 파일·디렉터리에 대한 **접근 허용 여부 결정**
 - 접근 처리 결과에 대한 **감사 메시지 생성**
+</br>
+
+
 
 ## 5. 요약 비교
 
@@ -44,6 +54,9 @@ tags: [is, summary]
 | **LSA** | 로그인 정보-SAM DB 비교·인증 검증, 계정명-SID 매칭, 감사 로그 기록 |
 | **SAM** | 계정 정보 데이터베이스 저장·관리 (조회 대상) |
 | **SRM** | SID 부여, 접근 허용 여부 결정, 감사 메시지 생성 |
+</br>
+
+
 
 ## 6. 근거
 
