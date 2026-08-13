@@ -1,7 +1,7 @@
 ---
 title: "Windows 인증 구성요소: LSA / SAM / SRM"
-categories: [IS, 7th-civil-exam]
-tags: [is, 7th-civil-exam, summary]
+categories: [IS]
+tags: [is, summary]
 ---
 
 # Windows 인증 구성요소: LSA / SAM / SRM
