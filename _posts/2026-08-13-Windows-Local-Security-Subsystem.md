@@ -7,6 +7,9 @@ tags: [is, summary]
 
 ## 1. 전체 인증 처리 흐름
 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/57fcccba-dad2-49b3-871b-3d9e26d20452" />
+
+
 ```
 ① 사용자 로그인 정보 입력 (Winlogon)
 → ② LSA: 인증 패키지(MSV1_0 등)를 통해 SAM 데이터베이스를 조회·비교하여 인증 여부를 검증
