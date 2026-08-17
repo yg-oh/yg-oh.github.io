@@ -21,10 +21,10 @@ U1 : REVOKE INSERT ON STUDENT FROM U2 CASCADE
 4번을 보면 U3이 검색(SELECT) 권한이 있다고 하였고, 저 선지가 답은 아니므로(답은 2번) 기출 답안 기준으로 **옳은** 선지이다.  
 하지만 **4번 선지는 옳지 않은 선지**이다.  
   
-전세계에서 사용하는 DB 교과서인 Database System (Silverschatz 저)(이하 원서)에 따라 이 문제의 오류를 짚고자 한다.  
+전세계에서 사용하는 DB 교과서인 Database System Concepts (Silberschatz 저)(이하 원서)에 따라 이 문제의 오류를 짚고자 한다.  
 <img width="737" height="72" alt="image" src="https://github.com/user-attachments/assets/f83e1623-80e3-4562-a6f0-c1359285a260" />
   <br>
-── *Database System (Silverschatz 저) 4.7.6절*  
+── *Database System (Silberschatz 저) 4.7.6절*  
 
 원서에 따르면 **연쇄 취소(CASCADE)는 생략할 수 있다**고 한다. (기본값)  
 따라서 문제의 "REVOKE GRANT OPTION FOR SELECT ON STUDENT FROM U2" 문장에서 CASCADE나 RESTRICT가 없으므로 (생략되었으므로) **CASCADE라고 생각**을 하고 푸는 것이 맞다.  
@@ -33,14 +33,14 @@ U1 : REVOKE INSERT ON STUDENT FROM U2 CASCADE
 <img width="737" height="105" alt="image" src="https://github.com/user-attachments/assets/b89a1c56-541a-46a3-9593-c5cbc67cf5be" />
 
   <br>
- ── *Database System (Silverschatz 저) 4.7.6절*  
+ ── *Database System (Silberschatz 저) 4.7.6절*  
 원서에 따르면, REVOKE GRANT OPTION은 only GRANT OPTION만 회수하는 것이다. (실제 SELECT 권한이 아니라)  
 즉, U2의 SELECT 권한이 아니라 GRANT OPTION 권한만 회수하는 것이다.  
 이때 U3의 SELECT 권한은 어떻게 되는지가 핵심 쟁점이다.  
   
 <img width="750" height="362" alt="image" src="https://github.com/user-attachments/assets/1834d5c7-5ad3-4272-a81c-8cb58e361e56" />
   <br>
- ── *Database System (Silverschatz 저) 4.7.5절*  
+ ── *Database System (Silberschatz 저) 4.7.5절*  
 원서에는 사용자는 권한 그래프의 최상위 노드(즉 데이터베이스 관리자)에서 해당 사용자를 나타내는 노드까지 내려오는 경로가 존재하는 경우에만 권한을 갖는다고 적혀 있다.  
 문제에서 U3가 받은 SELECT 권한은 U2가 당시 보유했던 WITH GRANT OPTION이라는 '특권(Privilege)'에 전적으로 의존하여 생성된 것이다.  
 그 후 CASCADE로 권한이 회수되었다.  
@@ -53,7 +53,7 @@ U3의 SELECT 권한의 근거는 U2의 **GRANT OPTION**이었다.
 
   <br>
   
- ── *Database System (Silverschatz 저) PPT*  
+ ── *Database System (Silberschatz 저) PPT*  
 저자가 제공하는 PPT에도 명시되어 있다.  
 > **취소되는 권한에 의존하는 모든 권한도 함께 취소된다.**  
 > **(All privileges that depend on the privilege being revoked are also revoked.)**  
