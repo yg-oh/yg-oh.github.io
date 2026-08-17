@@ -71,7 +71,7 @@ math: true
 이때, **비용**은 총 **32회**($2b_r$)이다. (16블록 읽기 + 16블록 쓰기)
 <br /><br /><br />
 
-### 2) 추가 패스 확인 (anothor pass)
+### 2) 추가 패스 확인 (another pass)
 > **If this reduced number of runs is still greater than or equal to M, another pass is made, with the runs created by the first pass as input.** <br />
 > **"만약 줄어든 런의 개수가 M보다 크거나 같은 경우 첫 번째 패스의 결과를 입력으로 하는 또 다른 패스를 생성한다."** (사진 2 참조)
 
@@ -148,7 +148,7 @@ Silberschatz의 Database System 뿐만 아니라, 또 다른 데이터베이스 
 
 해당 저서에서는 가용 버퍼 블록이 $n_{B}$개일 때, 합병 차수 $d_{M}$은 출력 버퍼 1개를 제외한 $n_B - 1$로 정의한다. 
 
-또한 예시에서 205개의 초기 런을 4-Way 합병($n_B = 5$)할 때 단수 블록 처리를 모두 올림($\lceil \dots \rceil$)하여 최종적으로 4패스(Four passes)가 소요되었다. 앞서 Silberschatz의 Database System에서 본 가용 메모리 블록($n_{B}$)에서 출력 버퍼 1개를 제외한 값($n_B - 1$)이 실제 합병 차수($d_{M}$)가 된다는 핵심 원칙을 똑같이 설명하고 있다. 이는 데이터베이스 이론에서 외부 합병 정렬의 패스 및 I/O 계산 규칙이 학계 전반에서 통용되는 표준 정의임을 증명한다.
+또한 예시에서 205개의 초기 런을 4-Way 합병($n_B = 5$)할 때 단수 블록 처리를 모두 올림($\lceil \dots \rceil$)하여 최종적으로 4패스(Four passes)가 소요되었다. 앞서 Silberschatz의 Database System에서 본 가용 메모리 블록($n_{B}$)에서 출력 버퍼 1개를 제외한 값($n_B - 1$)이 실제 합병 차수($d_{M}$)가 된다는 핵심 원칙을 똑같이 설명하고 있다. 이는 데이터베이스 이론에서 외부 합병 정렬의 패스 및 I/O 계산 규칙이 학계 전반에서 통용되는 표준 정의임을 방증한다.
 
 본 문제에 대입할 경우 생성된 초기 런의 개수($n_R$, initial sorted runs)은 4이고, $n_B - 1$은 4이므로 $d_M = \min(n_B - 1, n_R) = \min(5 - 1, 4) = \min(4, 4) = \mathbf{4}$ (4-Way Merge)
 
